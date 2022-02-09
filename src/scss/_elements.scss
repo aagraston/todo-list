@@ -6,3 +6,11 @@ h1 {
   font-weight: 300;
   font-size: 35px;
 }
+
+.symbol {
+  @extend %indicator;
+}
+
+.symbol:hover {
+  cursor:pointer;
+}

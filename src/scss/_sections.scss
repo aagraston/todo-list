@@ -29,7 +29,7 @@ body {
   justify-content: center;
   padding: 50px 0px 50px 0px;
 
-  background-color: $color-low-contrast-blue;
+  background-color: $color-black;
   color: $color-white;
 }
 
@@ -92,10 +92,6 @@ body {
   align-items: center;
 }
 
-.arrow {
-  @extend %indicator;
-}
-
 .new-project-button {
   padding-top: 20px;
   align-self: center;
@@ -114,7 +110,7 @@ padding: 20px;
 padding-top: 0px;
 
 p {
-  flex-basis: 33.33%;
+  flex-basis: 25%;
 }
 
 }
@@ -128,6 +124,8 @@ p {
 .task-container {
   @extend %item-container;
 
+  align-items: center;
+
   //border
   border: 0.2px solid $color-black;
   border-right: 0px;
@@ -135,7 +133,7 @@ p {
 }
 
 .task-container > * {
-  flex-basis: 33.33%;
+  flex-basis: 25%;
 }
 
 .task-details {
