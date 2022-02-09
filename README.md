@@ -1,2 +1,2 @@
-# boiler-plate-1.0
-A very simple boiler-plate for use in tutorial JS projects
+# TODO-LIST
+A project that encapsulates many of the skills I've acquired so far and employs them in the production of a 'to-do list' app

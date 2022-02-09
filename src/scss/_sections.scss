@@ -4,8 +4,15 @@ body {
 }
 
 %section-title {
-  align-self: center;
-  margin-top: 20px;
+  margin: 20px 0px 20px 20px;
+}
+
+//this is the shared container stylings for both project-container and task-container
+%item-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 20px;
 }
 
 .content {
@@ -14,15 +21,13 @@ body {
   justify-content: center;
   align-items: center;
   width: 100vw;
-
-  
 }
 
 .header-bar {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  padding: 20px 0px 20px 0px;
+  padding: 50px 0px 50px 0px;
 
   background-color: $color-low-contrast-blue;
   color: $color-white;
@@ -57,4 +62,85 @@ body {
   h2 {
     @extend %section-title;
   }
+}
+
+//project
+
+.projects {
+  border: 0.2px solid $color-white;
+  border-right: 0px;
+  border-left: 0px;
+}
+
+.project-container {
+  
+  @extend %item-container;
+
+  //border
+  border: 0.2px solid $color-white;
+  border-right: 0px;
+  border-left: 0px;
+
+  //border-shadow
+  // box-shadow: inset 0 0 8px 1px $color-white;
+}
+
+.project-details {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
+}
+
+.arrow {
+  @extend %indicator;
+}
+
+.new-project-button {
+  padding-top: 20px;
+  align-self: center;
+  p {
+    @extend %indicator;
+  }
+}
+
+//tasks
+
+.task-header-bar {
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+padding: 20px;
+padding-top: 0px;
+
+p {
+  flex-basis: 33.33%;
+}
+
+}
+
+.tasks {
+  border: 0.2px solid $color-black;
+  border-right: 0px;
+  border-left: 0px;
+}
+
+.task-container {
+  @extend %item-container;
+
+  //border
+  border: 0.2px solid $color-black;
+  border-right: 0px;
+  border-left: 0px;
+}
+
+.task-container > * {
+  flex-basis: 33.33%;
+}
+
+.task-details {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: center;
 }
