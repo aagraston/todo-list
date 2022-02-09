@@ -17,10 +17,14 @@ const projectFactory = (projTitle) => {
   const getNumTasks = _ => {
     return taskManager.getTaskCount();
   };
+  
+  const getTasks = _ => {
+    return taskManager.getTasks();
+  }
 
   const setFocus = (focusValue) => {
     isFocused = focusValue;
-  } 
+  }
 
   const createNewTask = (taskTitle) => {
     taskManager.createTask(taskTitle);
@@ -38,7 +42,7 @@ const projectFactory = (projTitle) => {
     projID = `P${id}`;
   }
 
-  return { getTitle, getNumTasks, createNewTask, setID, getID, updateTask, removeTask, setFocus };
+  return { getTitle, getNumTasks, getTasks, createNewTask, setID, getID, updateTask, removeTask, setFocus };
 };
 
 export default projectFactory;

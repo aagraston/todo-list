@@ -26,7 +26,23 @@ const taskFactory = (taskTitle) => {
     taskID = `T${id}`;
   }
 
-  return { getTitle, getPriority, getDueDate, setPriority, setCompleted, setDueDate, getID, setID };
+  const getPriorityColor = _ => {
+    switch (taskPriority) {
+      case 'low':
+        return '#31e981'
+        break;
+
+      case 'medium':
+        return '#ffd15'
+        break;
+
+      case 'high':
+        return '#db3a34'
+        break;
+    }
+  }
+
+  return { getTitle, getPriority, getDueDate, setPriority, setCompleted, setDueDate, getID, setID, getPriorityColor };
 };
 
 export default taskFactory;
