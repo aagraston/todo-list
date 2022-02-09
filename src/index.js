@@ -1,5 +1,5 @@
 import './scss/app.scss'
-import Project from './js/project';
+import ProjectManager from './js/projectManager';
 
-const testProj = Project('The Project');
+const testProj = ProjectManager();
 

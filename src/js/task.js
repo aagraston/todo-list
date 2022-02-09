@@ -1,9 +1,11 @@
 const taskFactory = (taskTitle) => {
 
+  let taskID = '';
   let taskPriority = 'low';
   let completed = false;
   let dueDate = new Date();
 
+  const getID = _ => taskID;
   const getTitle = _ => taskTitle;
   const getPriority = _ => taskPriority;
   const getDueDate = _ => dueDate;
@@ -20,7 +22,11 @@ const taskFactory = (taskTitle) => {
     dueDate = date;
   }
 
-  return { getTitle, getPriority, getDueDate, setPriority, setCompleted, setDueDate };
+  const setID = (id) => {
+    taskID = `T${id}`;
+  }
+
+  return { getTitle, getPriority, getDueDate, setPriority, setCompleted, setDueDate, getID, setID };
 };
 
 export default taskFactory;

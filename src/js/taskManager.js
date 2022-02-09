@@ -12,6 +12,7 @@ const taskManagerFactory = _ => {
   const createTask = (taskTitle) => {
     const task = Task(taskTitle);
     tasks.push(task);
+    task.setID(tasks.indexOf(task));
   }
 
   return { getTasks, createTask, getTaskCount };

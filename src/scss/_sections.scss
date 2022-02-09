@@ -93,11 +93,7 @@ body {
 }
 
 .new-project-button {
-  padding-top: 20px;
-  align-self: center;
-  p {
-    @extend %indicator;
-  }
+  @extend %new-button;
 }
 
 //tasks
@@ -141,4 +137,8 @@ p {
   flex-direction: row;
   gap: 20px;
   align-items: center;
+}
+
+.new-task-button {
+  @extend %new-button;
 }
