@@ -1,0 +1,60 @@
+body {
+  background-color: $color-white;
+  color: $color-black;
+}
+
+%section-title {
+  align-self: center;
+  margin-top: 20px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+
+  
+}
+
+.header-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 20px 0px 20px 0px;
+
+  background-color: $color-low-contrast-blue;
+  color: $color-white;
+}
+
+//the container for both the side bar and todo section
+.projects-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+
+}
+
+.side-bar {
+  display: flex;
+  flex-direction: column;
+  background-color: $color-gray;
+  color: $color-white;
+  height: 100vh;
+  flex-basis: 20%;
+
+  h2 {
+    @extend %section-title;
+  }
+}
+
+.todo-section {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 80%;
+
+  h2 {
+    @extend %section-title;
+  }
+}
