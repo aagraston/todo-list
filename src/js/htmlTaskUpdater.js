@@ -15,8 +15,11 @@ const HtmlTaskUpdater = () => {
       detailsDiv.classList.add('task-details');
 
       //checkbox
-      let checkbox = document.createElement('checkbox');
-      checkbox.setAttribute('type', 'checkbox');
+      let checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.id = ''; 
+      checkbox.name = '';
+      checkbox.value = '';
 
       //title
       let title = document.createElement('h3');
@@ -31,14 +34,15 @@ const HtmlTaskUpdater = () => {
       date.innerText = element.getDueDate().toString();
 
       //svg
-      let svg = document.createElement('svg');
-      svg.setAttribute('height', '20');
-      svg.setAttribute('width', '20');
+      let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+      svg.setAttribute('height', 20);
+      svg.setAttribute('width', 20);
 
-      let circle = document.createElement('circle');
-      circle.setAttribute('cx', '10');
-      circle.setAttribute('cy', '10');
-      circle.setAttribute('r', '10');
+      let circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+      
+      circle.setAttribute('cx', 10);
+      circle.setAttribute('cy', 10);
+      circle.setAttribute('r', 10);
       circle.setAttribute('fill', element.getPriorityColor());
 
       svg.appendChild(circle);
