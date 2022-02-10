@@ -2,16 +2,26 @@ import './scss/app.scss'
 import ProjectManager from './js/projectManager';
 import HTMLUpdater from './js/htmlUpdater';
 
+//init manager and html updater
 const testProj = ProjectManager();
 const htmlUpdater = HTMLUpdater();
 
-testProj.createProject('initial project');
-testProj.getCurrentFocus().createNewTask('This one has a title');
-testProj.getCurrentFocus().createNewTask('This one has one too!');
-testProj.getCurrentFocus().createNewTask('A third task my leige');
+//init buttons
+const newTaskButton = document.querySelector('.new-task-button');
 
-htmlUpdater.clearTaskList();
-htmlUpdater.updateTaskList(testProj.getCurrentFocus().getTasks());
+newTaskButton.addEventListener('click', createNewTask);
+
+testProj.createProject('initial project');
+
+
+//creates a new task in the currently focused project
+function createNewTask() {
+  let title = window.prompt('Please enter a task title');
+  
+  testProj.getCurrentFocus().createNewTask(title);
+  htmlUpdater.clearTaskList();
+  htmlUpdater.updateTaskList(testProj.getCurrentFocus().getTasks());
+}
 
 
 
