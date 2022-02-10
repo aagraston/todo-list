@@ -1,9 +1,8 @@
-const taskFactory = (taskTitle) => {
+const taskFactory = (taskTitle, dueDate, priority) => {
 
   let taskID = '';
-  let taskPriority = 'low';
+  let taskPriority = priority;
   let completed = false;
-  let dueDate = new Date();
 
   const getID = _ => taskID;
   const getTitle = _ => taskTitle;
@@ -33,7 +32,7 @@ const taskFactory = (taskTitle) => {
         break;
 
       case 'medium':
-        return '#ffd15'
+        return '#ffd151'
         break;
 
       case 'high':

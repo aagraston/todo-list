@@ -9,8 +9,8 @@ const taskManagerFactory = _ => {
     return tasks.length;
   }
 
-  const createTask = (taskTitle) => {
-    const task = Task(taskTitle);
+  const createTask = (taskTitle, dueDate, priority) => {
+    const task = Task(taskTitle, dueDate, priority);
     tasks.push(task);
     task.setID(tasks.indexOf(task));
   }

@@ -26,8 +26,8 @@ const projectFactory = (projTitle) => {
     isFocused = focusValue;
   }
 
-  const createNewTask = (taskTitle) => {
-    taskManager.createTask(taskTitle);
+  const createNewTask = (taskTitle, dueDate, priority) => {
+    taskManager.createTask(taskTitle, dueDate, priority);
   };
 
   const updateTask = (taskID, contactPoint, info) => {

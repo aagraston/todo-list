@@ -31,7 +31,7 @@ const HtmlTaskUpdater = () => {
 
       //date
       let date = document.createElement('p');
-      date.innerText = element.getDueDate().toLocaleDateString("en-US");
+      date.innerText = element.getDueDate();
 
       //svg
       let svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
