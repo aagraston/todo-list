@@ -2,6 +2,14 @@ h1 {
   font-size: 60px;
 }
 
+
+button {
+  border: none;
+  background-color: $color-low-contrast-blue;
+  color: $color-white;
+  font-weight: 700;
+}
+
 %indicator {
   font-weight: 300;
   font-size: 35px;
