@@ -46,7 +46,7 @@ const projectManagerFactory = () => {
 
   const getCurrentFocus = _ => currentFocus;
 
-  return { getProjects, createProject, getCurrentFocus, removeProject };
+  return { getProjects, createProject, getCurrentFocus, removeProject, setFocus };
 };
 
 export default projectManagerFactory;

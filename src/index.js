@@ -66,6 +66,9 @@ function addProjectToList() {
   updateTaskHtml();
   updateProjectHtml();
 
+  newTaskButton.addEventListener('click', createNewTask);
+  newProjectButton.addEventListener('click', createNewProject);
+
   taskListeners();
 }
 
@@ -86,6 +89,7 @@ function updateTaskHtml() {
 function updateProjectHtml() {
   htmlUpdater.clearProjList();
   htmlUpdater.updateProjectList(projManager.getProjects());
+  listenForProjectFocus();
 }
 
 function listenForTaskRemoval() {
@@ -102,6 +106,21 @@ function listenForTaskUpdate() {
   checkboxes.forEach(element => {
     element.addEventListener('click', updateThisTask);
   });
+}
+
+function listenForProjectFocus() {
+  let projects = document.querySelectorAll('.project-container');
+
+  projects.forEach(element => {
+    element.addEventListener('click', setProjectFocus);
+  });
+}
+
+function setProjectFocus() {
+  projManager.setFocus(this.getAttribute('id'));
+  updateProjectHtml()
+  updateTaskHtml();
+  taskListeners();
 }
 
 //update a task

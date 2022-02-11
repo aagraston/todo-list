@@ -7,6 +7,7 @@ const HtmlProjectUpdater = () => {
     projArray.forEach(element => {
       let projDiv = document.createElement('div');
       projDiv.classList.add('project-container');
+      projDiv.setAttribute('id', element.getID());
 
       let projDetailsDiv = document.createElement('div');
       projDetailsDiv.classList.add('project-details');
