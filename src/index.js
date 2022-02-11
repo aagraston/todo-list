@@ -3,7 +3,7 @@ import ProjectManager from './js/projectManager';
 import HTMLUpdater from './js/htmlUpdater';
 
 //init manager and html updater
-const testProj = ProjectManager();
+const projManager = ProjectManager();
 const htmlUpdater = HTMLUpdater();
 
 //init buttons
@@ -11,7 +11,10 @@ const newTaskButton = document.querySelector('.new-task-button');
 
 newTaskButton.addEventListener('click', createNewTask);
 
-testProj.createProject('initial project');
+projManager.createProject('initial project');
+
+
+//tasks
 
 
 //creates a new task in the currently focused project
@@ -29,18 +32,32 @@ function addTaskToList() {
   //collect information from form
   let formInfo = htmlUpdater.getFormInfo();
   //create a task in the current project with this information
-  testProj.getCurrentFocus().createNewTask(formInfo.title, formInfo.date, formInfo.priority);
+  projManager.getCurrentFocus().createNewTask(formInfo.title, formInfo.date, formInfo.priority);
   //remove the form html
   htmlUpdater.removeTaskForm();
   //clear the html of the task list
   htmlUpdater.clearTaskList();
   //update the task list with new html
-  htmlUpdater.updateTaskList(testProj.getCurrentFocus().getTasks());
+  htmlUpdater.updateTaskList(projManager.getCurrentFocus().getTasks());
   //listen for additional task creation again
   newTaskButton.addEventListener('click', createNewTask);
   //listen for task removal on newly created html
 
+  taskListeners();
+}
+
+
+//Listen to task interactions - deletion and checkbox status
+
+function taskListeners() {
   listenForTaskRemoval();
+  listenForTaskUpdate();
+}
+
+function updateTaskHtml() {
+  htmlUpdater.clearTaskList();
+  htmlUpdater.updateTaskList(projManager.getCurrentFocus().getTasks());
+  taskListeners();
 }
 
 function listenForTaskRemoval() {
@@ -51,11 +68,25 @@ function listenForTaskRemoval() {
   });
 }
 
+function listenForTaskUpdate() {
+  let checkboxes = document.querySelectorAll('.checkbox');
+  
+  checkboxes.forEach(element => {
+    element.addEventListener('click', updateThisTask);
+  });
+}
+
+//update a task
+function updateThisTask() {
+  projManager.getCurrentFocus().updateTask(this.parentNode.parentNode.getAttribute('id'), 'completion', this.checked);
+  updateTaskHtml();
+}
+
+//remove a task
+
 function removeThisTask() {
-  testProj.getCurrentFocus().removeTask(this.parentNode.getAttribute('id'));
-  htmlUpdater.clearTaskList();
-  htmlUpdater.updateTaskList(testProj.getCurrentFocus().getTasks());
-  listenForTaskRemoval();
+  projManager.getCurrentFocus().removeTask(this.parentNode.getAttribute('id'));
+  updateTaskHtml();
 }
 
 

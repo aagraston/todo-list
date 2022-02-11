@@ -18,9 +18,8 @@ const HtmlTaskUpdater = () => {
       //checkbox
       let checkbox = document.createElement('input');
       checkbox.type = 'checkbox';
-      checkbox.id = ''; 
-      checkbox.name = '';
-      checkbox.value = '';
+      checkbox.classList.add('checkbox');
+      checkbox.checked = element.getCompleted();
 
       //title
       let title = document.createElement('h3');

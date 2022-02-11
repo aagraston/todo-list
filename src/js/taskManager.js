@@ -3,6 +3,7 @@ import Task from './task';
 const taskManagerFactory = _ => {
 
   let tasks = [];
+  let index = 0;
 
   const getTasks = _ => tasks;
   const getTaskCount = _ => {
@@ -12,7 +13,8 @@ const taskManagerFactory = _ => {
   const createTask = (taskTitle, dueDate, priority) => {
     const task = Task(taskTitle, dueDate, priority);
     tasks.push(task);
-    task.setID(tasks.indexOf(task));
+    task.setID(index);
+    index++;
   }
 
   const updateTask = (taskID, contactPoint, newStatus) => {
@@ -20,6 +22,7 @@ const taskManagerFactory = _ => {
     let found = false;
 
     tasks.forEach(element => {
+      console.log(element.getID(), taskID);
       if (element.getID() === taskID) {
         
         found = true;

@@ -8,6 +8,7 @@ const taskFactory = (taskTitle, dueDate, priority) => {
   const getTitle = _ => taskTitle;
   const getPriority = _ => taskPriority;
   const getDueDate = _ => dueDate;
+  const getCompleted = _ => completed;
 
   const setPriority = (priority) => {
     taskPriority = priority;
@@ -41,7 +42,7 @@ const taskFactory = (taskTitle, dueDate, priority) => {
     }
   }
 
-  return { getTitle, getPriority, getDueDate, setPriority, setCompleted, setDueDate, getID, setID, getPriorityColor };
+  return { getTitle, getPriority, getCompleted, getDueDate, setPriority, setCompleted, setDueDate, getID, setID, getPriorityColor };
 };
 
 export default taskFactory;
