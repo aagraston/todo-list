@@ -17,17 +17,16 @@ projManager.createProject('initial project');
 
 updateProjectHtml();
 
-
+//begin creating projects or tasks
 function createNewProject() {
+  //create project form
+  htmlUpdater.createProjectForm();
+  newTaskButton.removeEventListener('click', createNewTask);
+  newProjectButton.removeEventListener('click', createNewProject);
 
+  let enterButton = document.querySelector('#enter');
+  enterButton.addEventListener('click', addProjectToList);
 }
-
-
-
-
-
-//tasks
-
 
 //creates a new task in the currently focused project
 function createNewTask() {
@@ -35,6 +34,7 @@ function createNewTask() {
   htmlUpdater.createTaskForm();
   //no longer accept new task generation until this one is submitted
   newTaskButton.removeEventListener('click', createNewTask);
+  newProjectButton.removeEventListener('click', createNewProject);
   //listen for form submission
   let enterButton = document.querySelector('#enter');
   enterButton.addEventListener('click', addTaskToList);
@@ -48,15 +48,25 @@ function addTaskToList() {
   //remove the form html
   htmlUpdater.removeTaskForm();
   //clear the html of the task list
-  htmlUpdater.clearTaskList();
-  //update the task list with new html
-  htmlUpdater.updateTaskList(projManager.getCurrentFocus().getTasks());
-  //listen for additional task creation again
+  updateTaskHtml();
+
   newTaskButton.addEventListener('click', createNewTask);
+  newProjectButton.addEventListener('click', createNewProject);
   //listen for task removal on newly created html
 
   taskListeners();
   updateProjectHtml();
+}
+
+function addProjectToList() {
+  let formInfo = htmlUpdater.getProjectTitle();
+
+  projManager.createProject(formInfo);
+  
+  updateTaskHtml();
+  updateProjectHtml();
+
+  taskListeners();
 }
 
 
@@ -98,6 +108,7 @@ function listenForTaskUpdate() {
 function updateThisTask() {
   projManager.getCurrentFocus().updateTask(this.parentNode.parentNode.getAttribute('id'), 'completion', this.checked);
   updateTaskHtml();
+  updateProjectHtml();
 }
 
 //remove a task
@@ -105,6 +116,7 @@ function updateThisTask() {
 function removeThisTask() {
   projManager.getCurrentFocus().removeTask(this.parentNode.getAttribute('id'));
   updateTaskHtml();
+  updateProjectHtml();
 }
 
 
