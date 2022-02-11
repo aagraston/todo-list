@@ -8,10 +8,22 @@ const htmlUpdater = HTMLUpdater();
 
 //init buttons
 const newTaskButton = document.querySelector('.new-task-button');
+const newProjectButton = document.querySelector('.new-project-button');
 
 newTaskButton.addEventListener('click', createNewTask);
+newProjectButton.addEventListener('click', createNewProject);
 
 projManager.createProject('initial project');
+
+updateProjectHtml();
+
+
+function createNewProject() {
+
+}
+
+
+
 
 
 //tasks
@@ -44,6 +56,7 @@ function addTaskToList() {
   //listen for task removal on newly created html
 
   taskListeners();
+  updateProjectHtml();
 }
 
 
@@ -60,6 +73,11 @@ function updateTaskHtml() {
   taskListeners();
 }
 
+function updateProjectHtml() {
+  htmlUpdater.clearProjList();
+  htmlUpdater.updateProjectList(projManager.getProjects());
+}
+
 function listenForTaskRemoval() {
   let removalButtons = document.querySelectorAll('.removal');
 
@@ -70,7 +88,7 @@ function listenForTaskRemoval() {
 
 function listenForTaskUpdate() {
   let checkboxes = document.querySelectorAll('.checkbox');
-  
+
   checkboxes.forEach(element => {
     element.addEventListener('click', updateThisTask);
   });

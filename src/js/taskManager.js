@@ -24,7 +24,7 @@ const taskManagerFactory = _ => {
     tasks.forEach(element => {
       console.log(element.getID(), taskID);
       if (element.getID() === taskID) {
-        
+
         found = true;
 
         switch (contactPoint) {
@@ -47,6 +47,20 @@ const taskManagerFactory = _ => {
     }
   }
 
+  const getNumCheckedTasks = _ => {
+
+    let retNum = 0;
+
+    tasks.forEach(element => {
+      if (element.getCompleted()) {
+        retNum++;
+      }
+    });
+
+    return retNum;
+
+  }
+
   const removeTask = (taskID) => {
     let elementToRemove = '';
     let index = '';
@@ -65,7 +79,7 @@ const taskManagerFactory = _ => {
 
   }
 
-  return { getTasks, createTask, getTaskCount, updateTask, removeTask };
+  return { getTasks, createTask, getTaskCount, updateTask, removeTask, getNumCheckedTasks };
 };
 
 export default taskManagerFactory;

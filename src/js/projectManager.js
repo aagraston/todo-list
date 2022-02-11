@@ -4,14 +4,16 @@ const projectManagerFactory = () => {
 
   let projects = [];
   let currentFocus = '';
+  let index = 0;
 
   const getProjects = _ => projects;
 
   const createProject = (projectTitle) => {
     let p = Project(projectTitle);
     projects.push(p);
-    p.setID(projects.indexOf(p));
+    p.setID(index);
     setFocus(p.getID());
+    index++;
   };
 
   const setFocus = (projectID) => {
