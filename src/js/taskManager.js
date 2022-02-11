@@ -49,8 +49,8 @@ const taskManagerFactory = _ => {
     let index = '';
 
     tasks.forEach(element => {
-      if (taskId === element.getID()) {
-        elementToRemove = elmement;
+      if (taskID === element.getID()) {
+        elementToRemove = element;
       }
     });
 

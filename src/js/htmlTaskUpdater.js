@@ -9,6 +9,7 @@ const HtmlTaskUpdater = () => {
       //task container
       let taskDiv = document.createElement('div');
       taskDiv.classList.add('task-container');
+      taskDiv.setAttribute('id', element.getID());
 
       //task details container
       let detailsDiv = document.createElement('div');
@@ -49,7 +50,7 @@ const HtmlTaskUpdater = () => {
 
       //removeButton
       let remove = document.createElement('p');
-      remove.classList.add('symbol');
+      remove.classList.add('symbol', 'removal');
       remove.innerText = '-';
 
       //appending
