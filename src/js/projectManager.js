@@ -1,52 +1,56 @@
-import Project from './project';
+import Project from './project'
 
 const projectManagerFactory = () => {
+  const projects = []
+  let currentFocus = ''
+  let index = 0
 
-  let projects = [];
-  let currentFocus = '';
-  let index = 0;
-
-  const getProjects = _ => projects;
-
-  const createProject = (projectTitle) => {
-    let p = Project(projectTitle);
-    projects.push(p);
-    p.setID(index);
-    setFocus(p.getID());
-    index++;
-  };
+  const getProjects = () => projects
 
   const setFocus = (projectID) => {
-    projects.forEach(element => {
+    projects.forEach((element) => {
       if (element.getID() === projectID) {
-        element.setFocus(true);
-        currentFocus = element;
+        element.setFocus(true)
+        currentFocus = element
       }
-    });
-  };
+    })
+  }
+
+  const createProject = (projectTitle) => {
+    const p = Project(projectTitle)
+    projects.push(p)
+    p.setID(index)
+    setFocus(p.getID())
+    index += 1
+  }
 
   const removeProject = (projectID) => {
-    projectToRemove = '';
-    index = '';
+    let projectToRemove = ''
+    let index = ''
 
-    projects.forEach(element => {
+    projects.forEach((element) => {
       if (element.getID() === projectID) {
-        projectToRemove = element;
-        index = projects.indexOf(element);
+        projectToRemove = element
+        index = projects.indexOf(element)
       }
-    });
+    })
 
-    if (projectToRemove != '') {
-      projects.splice(index, 1);
+    if (projectToRemove !== '') {
+      projects.splice(index, 1)
+    } else {
+      window.alert('project not found')
     }
-    else {
-      window.alert('project not found');
-    }
-  };
+  }
 
-  const getCurrentFocus = _ => currentFocus;
+  const getCurrentFocus = () => currentFocus
 
-  return { getProjects, createProject, getCurrentFocus, removeProject, setFocus };
-};
+  return {
+    getProjects,
+    createProject,
+    getCurrentFocus,
+    removeProject,
+    setFocus,
+  }
+}
 
-export default projectManagerFactory;
+export default projectManagerFactory

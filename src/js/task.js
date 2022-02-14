@@ -1,52 +1,59 @@
 const taskFactory = (taskTitle, dueDate, priority) => {
+  let taskID = ''
+  let taskPriority = priority
+  let completed = false
+  let dateDue = dueDate
 
-  let taskID = '';
-  let taskPriority = priority;
-  let completed = false;
+  const getID = () => taskID
+  const getTitle = () => taskTitle
+  const getPriority = () => taskPriority
+  const getDueDate = () => dateDue
+  const getCompleted = () => completed
 
-  const getID = _ => taskID;
-  const getTitle = _ => taskTitle;
-  const getPriority = _ => taskPriority;
-  const getDueDate = _ => dueDate;
-  const getCompleted = _ => completed;
-
-  const setPriority = (priority) => {
-    taskPriority = priority;
+  const setPriority = (priorityArg) => {
+    taskPriority = priorityArg
   }
 
   const setCompleted = (status) => {
-    completed = status;
+    completed = status
   }
 
   const setDueDate = (date) => {
-    dueDate = date;
+    dateDue = date
   }
 
   const setID = (id) => {
-    taskID = `T${id}`;
+    taskID = `T${id}`
   }
 
-  const getPriorityColor = _ => {
+  const getPriorityColor = () => {
     switch (taskPriority) {
       case 'low':
         return '#31e981'
-        break;
 
       case 'medium':
         return '#ffd151'
-        break;
 
       case 'high':
         return '#db3a34'
-        break;
+
+      default:
+        return null
     }
   }
 
-  return { getTitle, getPriority, getCompleted, getDueDate, setPriority, setCompleted, setDueDate, getID, setID, getPriorityColor };
-};
+  return {
+    getTitle,
+    getPriority,
+    getCompleted,
+    getDueDate,
+    setPriority,
+    setCompleted,
+    setDueDate,
+    getID,
+    setID,
+    getPriorityColor,
+  }
+}
 
-export default taskFactory;
-
-
-
-
+export default taskFactory
